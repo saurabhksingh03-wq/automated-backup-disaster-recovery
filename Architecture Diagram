@@ -1,0 +1,24 @@
+                     Linux Application
+                            │
+                            ▼
+                 Bash Backup Script
+                            │
+          ┌─────────────────┼─────────────────┐
+          │                 │                 │
+          ▼                 ▼                 ▼
+   Create Archive      Write Logs      Verify Backup
+          │
+          ▼
+   Compressed tar.gz
+          │
+          ▼
+ Backup Directory (/backup)
+          │
+          ▼
+    Backup Retention Policy
+          │
+          ▼
+      AWS S3 Bucket
+          │
+          ▼
+ Disaster Recovery Restore
