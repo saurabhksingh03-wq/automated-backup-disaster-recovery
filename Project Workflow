@@ -1,0 +1,19 @@
+Application Data
+       │
+       ▼
+Backup Script
+       │
+       ▼
+Compressed Archive
+       │
+       ▼
+Logging
+       │
+       ▼
+Cron Scheduler
+       │
+       ▼
+AWS S3 Storage
+       │
+       ▼
+Restore when required
