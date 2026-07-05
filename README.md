@@ -1,4 +1,4 @@
-# automated-backup-disaster-recovery
+# Automated-backup-disaster-recovery
 Production-ready automated backup and disaster recovery solution using Bash scripting, Cron Jobs, AWS S3, logging, backup retention, and restore automation on RHEL 10.
 Automated Backup & Disaster Recovery Solution
 Project Overview
@@ -22,3 +22,45 @@ Cron
 AWS CLI
 Amazon S3
 
+Features
+1. Automated backup script
+2. Timestamp-based archive creation
+3. Compressed backups using tar.gz
+4. Logging and error handling
+5. Cron-based scheduling
+6. Backup retention policy
+7. Disaster recovery testing
+8. AWS S3 integration
+
+Skills Demonstrated
+1. Linux Administration
+2. Bash Scripting
+3. Automation
+4. Disaster Recovery
+5. AWS S3
+6. AWS CLI
+7. Cron Jobs
+8. Log Management
+9. File Compression
+10. Backup Retention
+
+Project Workflow
+Application Data
+       │
+       ▼
+Backup Script
+       │
+       ▼
+Compressed Archive
+       │
+       ▼
+   Logging
+       │
+       ▼
+Cron Scheduler
+       │
+       ▼
+AWS S3 Storage
+       │
+       ▼
+Restore when required
