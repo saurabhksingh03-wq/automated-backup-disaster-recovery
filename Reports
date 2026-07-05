@@ -1,0 +1,243 @@
+Automated Backup & Disaster Recovery Solution
+Author
+
+Saurabh Singh
+
+Project Number
+
+Project 02
+
+Environment
+Cloud Platform: AWS EC2
+Operating System: Red Hat Enterprise Linux (RHEL 10)
+Package Manager: DNF
+Automation: Bash Shell Scripting
+Scheduler: Cron (crond)
+Cloud Storage: Amazon S3
+Compression: tar & gzip
+Logging: Custom Log File (/var/log/devops-backup/backup.log)
+1. Objective
+
+The objective of this project was to design and implement a production-grade automated backup and disaster recovery solution for a Linux application. The project focused on automating backups using Bash scripting, scheduling execution with Cron, implementing centralized logging and error handling, configuring backup retention policies, performing disaster recovery testing through restoration, and securely storing backups in Amazon S3 for off-site disaster recovery.
+
+2. Project Scope
+
+The following components were implemented:
+
+Server Preparation
+Sample Production Application Setup
+Backup Repository Configuration
+Manual Backup Creation
+Backup Automation using Bash
+Logging & Error Handling
+Cron Job Scheduling
+Disaster Recovery Testing
+Backup Retention Policy
+AWS S3 Backup Integration
+3. Architecture
+                Linux Application
+                       │
+                       ▼
+              Bash Backup Script
+                       │
+        ┌──────────────┼───────────────┐
+        │              │               │
+        ▼              ▼               ▼
+ Timestamp      Logging System    Error Handling
+        │
+        ▼
+Compressed Backup (.tar.gz)
+        │
+        ▼
+ Local Backup Repository
+        │
+        ▼
+ Backup Retention Policy
+        │
+        ▼
+      AWS S3 Bucket
+        │
+        ▼
+ Disaster Recovery Restore
+4. Project Implementation
+Phase 1 – Server Preparation
+
+Tasks Performed
+
+Updated system packages
+Configured hostname
+Installed required Linux utilities
+Verified operating system
+
+Verification
+
+hostnamectl
+cat /etc/os-release
+dnf history
+Phase 2 – Sample Production Application
+
+Tasks Performed
+
+Created application directory structure
+Created configuration files
+Created log files
+Created uploads directory
+Created sample database backup
+
+Verification
+
+tree /opt/ecommerce-app
+cat app.conf
+cat database.sql
+Phase 3 – Backup Repository Configuration
+
+Tasks Performed
+
+Created backup repository
+Configured permissions
+Verified storage space
+Generated timestamp naming convention
+
+Verification
+
+ls -ld /backup/ecommerce
+df -h
+du -sh
+Phase 4 – Manual Backup Creation
+
+Tasks Performed
+
+Created compressed backup archive
+Verified backup archive
+Listed archive contents
+Compared archive size
+
+Verification
+
+tar -czf
+tar -tvf
+gzip -t
+ls -lh
+Phase 5 – Backup Automation
+
+Tasks Performed
+
+Developed reusable Bash backup script
+Used variables for source and destination
+Generated timestamp-based backup names
+Automated backup creation
+
+Verification
+
+./backup.sh
+ls -lh /backup/ecommerce
+Phase 6 – Logging & Error Handling
+
+Implemented
+
+Centralized logging
+Success and failure logging
+Exit status validation
+Backup statistics
+File count logging
+Backup size logging
+
+Verification
+
+cat /var/log/devops-backup/backup.log
+echo $?
+Phase 7 – Cron Job Automation
+
+Implemented
+
+Enabled Cron service
+Scheduled automatic backups
+Verified scheduled execution
+Tested Cron automation
+
+Verification
+
+systemctl status crond
+crontab -l
+tail backup.log
+Phase 8 – Disaster Recovery
+
+Implemented
+
+Simulated application failure
+Restored application from backup
+Verified restored data
+Validated recovery process
+
+Verification
+
+tar -xzvf
+tree /opt/ecommerce-app
+cat index.html
+Phase 9 – Backup Retention Policy
+
+Implemented
+
+Automatic backup cleanup
+Configurable retention period
+Deleted expired backups
+Logged cleanup activities
+
+Verification
+
+find -mtime
+ls /backup/ecommerce
+backup.log
+Phase 10 – AWS S3 Integration
+
+Implemented
+
+Installed AWS CLI
+Configured AWS authentication
+Uploaded backup archive to Amazon S3
+Verified successful upload
+Integrated S3 upload into backup automation
+
+Verification
+
+aws --version
+aws s3 ls
+aws s3 cp
+aws sts get-caller-identity
+5. Key Learnings
+Linux Backup Strategies
+Disaster Recovery Planning
+Bash Shell Scripting
+Linux Automation
+Cron Job Scheduling
+Backup Compression
+AWS CLI
+Amazon S3
+Error Handling
+Log Management
+Backup Retention Policies
+Production Automation
+6. Challenges Faced
+Understanding tar compression options
+Writing reusable Bash scripts
+Handling script failures using exit codes
+Configuring Cron jobs correctly
+Managing backup retention using find
+Validating backup integrity
+Restoring applications after simulated failures
+Configuring AWS CLI authentication
+Uploading backups securely to Amazon S3
+7. Best Practices Followed
+Used variables instead of hardcoded paths.
+Implemented timestamp-based backup naming.
+Logged every backup operation.
+Added error handling using exit codes.
+Tested backup restoration after every backup implementation.
+Implemented backup retention policy to manage storage.
+Used Cron for unattended automation.
+Stored backups in Amazon S3 for off-site disaster recovery.
+Verified backup integrity before considering the backup successful.
+Structured the script for readability and maintainability.
+8. Conclusion
+
+The project successfully demonstrated a production-ready automated backup and disaster recovery solution using Linux, Bash scripting, Cron, and AWS. The backup process was fully automated, validated through logging, protected with retention policies, and tested using disaster recovery restoration. Integration with Amazon S3 ensured secure off-site backup storage, making the solution suitable for real-world production environments.
